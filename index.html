@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>薬院よりみちマップ | 福岡・薬院駅周辺ガイド</title>
+    <meta
+      name="description"
+      content="福岡・薬院駅周辺の観光、散策、ランチ、カフェ、夜ごはん候補をGoogleマップと一緒に見られるローカルガイド。"
+    />
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23111111'/%3E%3Ctext x='32' y='42' text-anchor='middle' font-size='34' font-family='Arial' font-weight='700' fill='white'%3EY%3C/text%3E%3C/svg%3E" />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar" aria-label="サイトヘッダー">
+        <a class="brand" href="#top" aria-label="薬院よりみちマップ">
+          <span class="brand-mark" aria-hidden="true">Y</span>
+          <span>
+            <strong>薬院よりみちマップ</strong>
+            <small>Fukuoka / Yakuin Station</small>
+          </span>
+        </a>
+        <nav class="topnav" aria-label="ページ内メニュー">
+          <a href="#top">トップ</a>
+          <a href="#spots">スポット</a>
+          <a href="#routes">コース</a>
+          <a href="#sources">参考</a>
+        </nav>
+      </header>
+
+      <main id="top">
+        <section class="map-board" aria-labelledby="page-title">
+          <div class="finder-panel">
+            <div class="intro">
+              <div class="intro-copy">
+                <p class="eyebrow">薬院駅から歩いて楽しむ</p>
+                <h1 id="page-title">観光もごはんも、地図を見ながらさっと決める。</h1>
+                <p>
+                  三角市場、今泉の路地、警固神社、人気ランチやカフェまで。薬院駅を起点に、短い空き時間でも使いやすい候補をまとめました。
+                </p>
+              </div>
+              <figure class="intro-photo">
+                <img
+                  src="https://commons.wikimedia.org/wiki/Special:FilePath/Yakuin%20Station%2020180511.jpg"
+                  alt="福岡市中央区の薬院駅周辺"
+                />
+                <figcaption>薬院駅を起点に半径約1kmで案内</figcaption>
+              </figure>
+            </div>
+
+            <div class="controls" aria-label="スポット検索">
+              <label class="search-box">
+                <span class="visually-hidden">キーワード検索</span>
+                <svg aria-hidden="true" viewBox="0 0 24 24">
+                  <path d="m21 21-4.3-4.3M10.8 18a7.2 7.2 0 1 1 0-14.4 7.2 7.2 0 0 1 0 14.4Z" />
+                </svg>
+                <input id="searchInput" type="search" placeholder="例：カレー、神社、夜、テイクアウト" />
+              </label>
+              <div class="filter-row" role="group" aria-label="カテゴリで絞り込み">
+                <button class="filter-chip active" type="button" data-filter="all" aria-pressed="true">すべて</button>
+                <button class="filter-chip" type="button" data-filter="walk" aria-pressed="false">街歩き</button>
+                <button class="filter-chip" type="button" data-filter="lunch" aria-pressed="false">ランチ</button>
+                <button class="filter-chip" type="button" data-filter="cafe" aria-pressed="false">カフェ</button>
+                <button class="filter-chip" type="button" data-filter="night" aria-pressed="false">夜</button>
+              </div>
+            </div>
+          </div>
+
+          <aside class="map-panel" aria-label="Googleマップ">
+            <div class="map-header">
+              <div>
+                <p class="eyebrow">Google Map</p>
+                <h2 id="mapTitle">薬院駅 周辺</h2>
+              </div>
+              <a
+                id="mapOpenLink"
+                class="icon-button"
+                href="https://www.google.com/maps/search/?api=1&query=%E8%96%AC%E9%99%A2%E9%A7%85%20%E7%A6%8F%E5%B2%A1"
+                target="_blank"
+                rel="noreferrer"
+                aria-label="Googleマップで開く"
+                title="Googleマップで開く"
+              >
+                <svg aria-hidden="true" viewBox="0 0 24 24">
+                  <path d="M14 3h7v7" />
+                  <path d="M10 14 21 3" />
+                  <path d="M21 14v5a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5" />
+                </svg>
+              </a>
+            </div>
+            <div class="map-frame">
+              <iframe
+                id="googleMap"
+                title="薬院駅周辺のGoogleマップ"
+                src="https://www.google.com/maps?q=%E8%96%AC%E9%99%A2%E9%A7%85%20%E7%A6%8F%E5%B2%A1&output=embed"
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+                allowfullscreen
+              ></iframe>
+            </div>
+            <p class="map-note">カードの「経路を見る」で、薬院駅から目的地までの徒歩ルートを表示します。営業時間や定休日はGoogleマップ側で最新情報を確認してください。</p>
+            <div class="planner" aria-label="行きたいリスト">
+              <div class="planner-head">
+                <div>
+                  <p class="eyebrow">Plan</p>
+                  <h3>行きたいリスト</h3>
+                </div>
+                <button id="planClear" class="planner-clear" type="button">クリア</button>
+              </div>
+              <p id="plannerEmpty" class="planner-empty">スポットの「保存」を押すと、ここに候補が並びます。</p>
+              <ol id="planList" class="plan-list"></ol>
+              <a
+                id="planRoute"
+                class="plan-route disabled"
+                href="https://www.google.com/maps/search/?api=1&query=%E8%96%AC%E9%99%A2%E9%A7%85%20%E7%A6%8F%E5%B2%A1"
+                target="_blank"
+                rel="noreferrer"
+                aria-disabled="true"
+              >
+                保存した順でまとめて経路
+              </a>
+            </div>
+          </aside>
+        </section>
+
+        <section class="section-wrap" id="spots" aria-labelledby="spots-title">
+          <div class="section-heading">
+            <p class="eyebrow">Spot Pages</p>
+            <h2 id="spots-title">こんな場所があります</h2>
+            <p>ひとつずつ大きく紹介します。気になる場所は「経路を見る」から薬院駅発のルートへ切り替えられます。</p>
+          </div>
+          <div class="spot-grid" id="spotGrid" aria-live="polite"></div>
+        </section>
+
+        <section class="feature-band" id="routes" aria-labelledby="routes-title">
+          <div class="section-heading">
+            <p class="eyebrow">Tiny Routes</p>
+            <h2 id="routes-title">薬院からのよりみちコース</h2>
+          </div>
+          <div class="route-grid">
+            <article class="route-card">
+              <span class="route-time">30分</span>
+              <h3>駅前レトロ散歩</h3>
+              <p>薬院駅から三角市場をのぞいて、渡辺通の小さな店を見ながら戻る短時間コース。</p>
+              <button type="button" class="route-link" data-destination="三角市場 福岡 薬院" data-label="駅前レトロ散歩">経路を見る</button>
+            </article>
+            <article class="route-card">
+              <span class="route-time">90分</span>
+              <h3>今泉と警固神社</h3>
+              <p>今泉の路地を歩いて、警固神社・警固公園へ。買い物と休憩を混ぜやすいコース。</p>
+              <button type="button" class="route-link" data-destination="警固神社 福岡" data-waypoints="今泉 福岡" data-label="今泉と警固神社">経路を見る</button>
+            </article>
+            <article class="route-card">
+              <span class="route-time">夕方</span>
+              <h3>ごはんから一杯</h3>
+              <p>駅近の餃子、海鮮、カレーで食べてから、今泉や三角市場方面へ流れる夜コース。</p>
+              <button type="button" class="route-link" data-destination="三角市場 福岡 薬院" data-waypoints="餃子李 薬院" data-label="ごはんから一杯">経路を見る</button>
+            </article>
+          </div>
+        </section>
+
+        <section class="image-strip" aria-label="薬院周辺の雰囲気">
+          <figure>
+            <img
+              src="https://commons.wikimedia.org/wiki/Special:FilePath/Imaizumi%20Park%2020180511.jpg"
+              alt="福岡市中央区今泉の公園"
+            />
+            <figcaption>今泉</figcaption>
+          </figure>
+          <figure>
+            <img
+              src="https://commons.wikimedia.org/wiki/Special:FilePath/Kego%20Shrine%20and%20Kego%20Park.jpg"
+              alt="警固神社と警固公園"
+            />
+            <figcaption>警固神社・警固公園</figcaption>
+          </figure>
+          <figure>
+            <img
+              src="https://commons.wikimedia.org/wiki/Special:FilePath/View%20near%20Yakuin%20Station%20at%20night.jpg"
+              alt="夜の薬院駅周辺"
+            />
+            <figcaption>夜の薬院</figcaption>
+          </figure>
+        </section>
+      </main>
+
+      <footer class="footer" id="sources">
+        <p>参考情報は2026年7月24日時点。営業情報はGoogleマップ等で確認してください。</p>
+        <div class="source-links">
+          <a href="https://subway.city.fukuoka.lg.jp/eki/stations/yakuin_sisetu.php" target="_blank" rel="noreferrer">福岡市地下鉄 薬院駅周辺施設</a>
+          <a href="https://www.crossroadfukuoka.jp/spot/12509" target="_blank" rel="noreferrer">クロスロードふくおか 警固神社</a>
+          <a href="https://yokanavi.com/areaguide" target="_blank" rel="noreferrer">よかなび エリアガイド</a>
+          <a href="https://subway.city.fukuoka.lg.jp/tikamaruwebmap/course/15/" target="_blank" rel="noreferrer">福岡市地下鉄 浄水通りコース</a>
+          <a href="https://tabelog.com/fukuoka/A4001/A400101/R10122/rstLst/lunch/" target="_blank" rel="noreferrer">食べログ 薬院駅ランチ</a>
+          <a href="https://www.mapple.net/original/495961/" target="_blank" rel="noreferrer">まっぷる 薬院ランチ</a>
+          <a href="https://commons.wikimedia.org/wiki/Category:Yakuin_Station" target="_blank" rel="noreferrer">画像: Wikimedia Commons</a>
+        </div>
+      </footer>
+    </div>
+
+    <script src="./app.js"></script>
+  </body>
+</html>
